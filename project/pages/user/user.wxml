@@ -1,0 +1,8 @@
+<button wx:if='{{!user.nickName}}' open-type='getUserInfo' bindgetuserinfo='getUserInfo' size='small' style="width: 200rpx;display: block;margin: 100rpx auto;">登录</button>
+<view>
+  <block wx:if='{{user.nickName}}'>
+
+    <image src='{{user.avatarUrl}}' style="display: block;margin: 50rpx auto;"></image>
+    <view class="aln-c">{{usre.nickName}}</view>
+  </block>
+</view>

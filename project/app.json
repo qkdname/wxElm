@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/msite/msite",
+    "pages/find/find",
+    "pages/order/order",
+    "pages/user/user",
+    "pages/location/location",
+    "pages/food/food",
+    "templates/restaurants/restaurnats",
+    "pages/shop/shop"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1e89e0",
+    "navigationBarTitleText": "饿了么",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "selectedColor": "#1e89e0",
+    "list": [
+      {
+        "pagePath": "pages/msite/msite",
+        "text": "首页",
+        "iconPath": "images/msite.png",
+        "selectedIconPath": "images/msiteSelected.png"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "text": "发现",
+        "iconPath": "images/find.png",
+        "selectedIconPath": "images/findSelected.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "images/order.png",
+        "selectedIconPath": "images/orderSelected.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/userSelected.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+<import src='../../templates/restaurants/restaurnats' />
+<view class="header">
+  当前位置：{{location.address.length>6?location.address+'...':location.address}}
+</view>
+<swiper indicator-dots='true' indicator-active-color='#1e89e0'>
+  <swiper-item>
+    <block wx:for='{{foodEntry[0].entries}}' wx:key='index'>
+      <navigator url='../food/food' class="entry" wx:if='{{index<10}}'>
+        <image src='{{item.image_hash}}'></image>
+        <view>{{item.name}}</view>
+      </navigator>
+    </block>
+  </swiper-item>
+  <swiper-item>
+    <block wx:for='{{foodEntry[1].entries}}' wx:key='index'>
+      <navigator url='../food/food' class="entry">
+        <image src='{{item.image_hash}}'></image>
+        <view>{{item.name}}</view>
+      </navigator>
+    </block>
+  </swiper-item>
+</swiper>
+<view class="aln-c" style='line-height: 72rpx'>- 推荐商家 -</view>
+<template is='restaurants' data='{{restaurants}}'></template>
