@@ -3,20 +3,26 @@
     "pages/msite/msite",
     "pages/find/find",
     "pages/order/order",
-    "pages/user/user",
-    "pages/location/location",
-    "pages/food/food",
-    "templates/restaurants/restaurnats",
-    "pages/shop/shop"
+    "pages/user/user"
+  ],
+  "subPackages": [
+    {
+      "root": "packageA",
+      "pages": [
+        "pages/food/food",
+        "pages/search/search",
+        "pages/address/address",
+        "pages/shop/shop"
+      ]
+    }
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#1e89e0",
-    "navigationBarTitleText": "饿了么",
-    "navigationBarTextStyle": "white"
+    "navigationBarBackgroundColor": "#0085ff",
+    "navigationBarTitleText": "饿了么"
   },
   "tabBar": {
-    "selectedColor": "#1e89e0",
+    "selectedColor": "#0085ff",
     "list": [
       {
         "pagePath": "pages/msite/msite",

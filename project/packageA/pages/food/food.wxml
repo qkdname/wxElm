@@ -1,0 +1,25 @@
+<import src='../../../pages/restaurants/restaurants' />
+<view class="{{showRank?'mask':'mas'}}">
+  <view style="z-index:99;background: #fff;">
+    <scroll-view scroll-x class="bg-main" style="overflow: hidden;white-space: nowrap;">
+      <block wx:for='{{categories}}' wx:key='{{index}}'>
+        <text style="display: inline-block;line-height: 50rpx;margin: 10rpx 20rpx;border-bottom: {{index == currentIndex?'4rpx solid #fff':'none'}};opacity:{{index == currentIndex?1:0.7}}"
+          data-ids='{{item.restaurant_category_ids}}' data-index='{{index}}' bindtap='setIds'>{{item.name}}</text>
+      </block>
+    </scroll-view>
+    <view class="txt-c" style="line-height: 70rpx;border-bottom: 2rpx solid #ccc;padding: 0 20rpx">
+      <view style="display: inline-block;width: 50%;" bindtap='showRank'>排序</view>
+      <view style="display: inline-block;width: 50%;">筛选</view>
+    </view>
+    <view class="rank" wx:if='{{showRank}}' class="txt-c" style="line-height: 60rpx;" bindtap='rank'>
+      <view style="border-bottom: 2rpx solid #ccc" data-rank='0'>综合排序</view>
+      <view style="border-bottom: 2rpx solid #ccc" data-rank='6'>销量高</view>
+      <view style="border-bottom: 2rpx solid #ccc" data-rank='1'>起送价低</view>
+      <view style="border-bottom: 2rpx solid #ccc" data-rank='2'>配送快</view>
+    </view>
+  </view>
+</view>
+<view style="position: {{showRank?'fixed':'static'}};">
+
+  <template is='restaurants' data='{{restaurants}}'></template>
+</view>

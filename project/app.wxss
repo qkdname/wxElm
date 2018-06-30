@@ -1,43 +1,73 @@
-page{
-  font: 32rpx/1.2 'Helvetica Neue',Tahoma,Arial,PingFangSC-Regular,'Hiragino Sans GB','Microsoft Yahei',sans-serif;
+@import 'css/icon.wxss';
+page {
+  font: 28rpx/1.2 'Helvetica Neue', Tahoma, Arial, PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
   color: #333;
 }
-.pos-r{
+
+.bg-main {
+  background: #0085ff;
+  color: #fff;
+}
+
+.pos-r {
   position: relative;
 }
-.pos-a{
+
+.pos-a {
   position: absolute;
 }
-.aln-r{
+
+.mar-au {
+  margin: 0 auto;
+}
+.txt-ell{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.txt-r {
   text-align: right;
 }
-.aln-c{
+
+.txt-c {
   text-align: center;
 }
-.fl{
+
+.fl {
   float: left;
 }
-.fr{
+
+.fr {
   float: right;
 }
-.fx{
+
+.fx {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-.fx-sbt{
+
+.fx-sbt {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
-.alm-c{
+
+.alm-c {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
+
+.dsp-inb {
+  display: inline-block;
+}
+
+
+

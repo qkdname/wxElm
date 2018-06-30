@@ -1,0 +1,23 @@
+<view>
+  <view class="pos-r" style="padding: 20rpx 40rpx;background: #fff;line-height: 70rpx;">
+    <icon class="pos-a" size='14' type='search' style="top: 35rpx;left: 60rpx;"></icon>
+    <input type="text" placeholder="请输入地址" value='' style="padding-left: 70rpx;background: #f4f4f4;height: 70rpx;" bindconfirm='getResults'
+    />
+  </view>
+  
+  <view style="padding: 20rpx;background: #f4f4f4;">当前地址</view>
+  <view style="padding: 20rpx" class="fx-sbt">
+    <view bindtap='setLocation'>{{address.name}}</view>
+    <view style="color: #0085ff" bindtap='getAddress'>重新定位</view>
+  </view>
+  <view style="padding: 20rpx 40rpx;font-size: 24rpx;background: #f4f4f4;">搜索结果</view>
+  <view wx:if='{{results.length}}'>
+    
+    <block wx:for='{{results}}' wx:key='{{index}}'>
+      <view bindtap='setLocation' data-index='{{index}}' style="border-bottom: 2rpx solid #eee;line-height: 1.6;padding: 10rpx 40rpx;">
+        <view>{{item.name}}</view>
+        <view style="font-size: 24rpx">{{item.address}}</view>
+      </view>
+    </block>
+  </view>
+</view>

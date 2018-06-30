@@ -1,0 +1,58 @@
+<template name='restaurants'>
+    <view>
+      <block wx:for='{{restaurants}}' wx:key='{{index}}'>
+        <view class="pos-r" style="display:block;border-bottom:2rpx solid #eee;padding: 20rpx 20rpx 20rpx 170rpx;min-width: 130rpx;">
+          <navigator url='{{url}}'>
+            <image class="pos-a" src='{{item.restaurant.image_path}}' style="top:20rpx;left:20rpx;width: 130rpx;height: 130rpx;"></image>
+            <view class="fx-sbt" style="height: 130rpx;flex-direction: column;font-size: 24rpx;">
+              <view class="fx-sbt">
+                <view class="txt-ell">
+                  <text style="font-weight: bold;background: #fff100;margin-right: 20rpx;">品牌</text>
+                  <text style="font-weight: bold;font-size: 28rpx">{{item.restaurant.name}}</text>
+                </view>
+                <view style="color: #999">
+                  <view>
+                    <block wx:for='{{item.restaurant.supports}}' wx:for-item='ite' wx:for-index='inde' wx:key='{{inde}}'>
+                      <text style="margin-right: 10rpx;">{{ite.icon_name}}</text>
+                    </block>
+                  </view>
+                </view>
+              </view>
+              <view class="fx-sbt">
+                <view>
+                  评分：
+                  <text>{{item.restaurant.rating}}</text>
+                  月售：
+                  <text>{{item.restaurant.recent_order_num}}</text>
+                </view>
+                <view class="bg-main">{{item.restaurant.delivery_mode.text}}</view>
+              </view>
+              <view class="fx-sbt">
+                <view>
+                  <text>￥{{item.restaurant.float_minimum_order_amount}}起送 | </text>
+                  <text>配送费￥{{item.restaurant.float_delivery_fee}}</text>
+                </view>
+                <view>
+                  <text>{{item.restaurant.distance/1000}}km | </text>{{item.restaurant.order_lead_time}}分钟
+                </view>
+              </view>
+            </view>
+          </navigator>
+          <view style="margin-top: 10rpx;font-size: 24rpx;overflow: hidden;height: {{item.show?'auto':'76rpx'}};">
+            <block wx:for='{{item.restaurant.activities}}' wx:for-index='inde' wx:for-item='ite' wx:key='{{index}}'>
+              <view class="fx-sbt" style="line-height: 1.6;color: #999">
+                <view>
+                  <text style="color:#fff;background: {{'#'+ite.icon_color}};">{{ite.icon_name}}</text>
+                  {{ite.tips}}
+                </view>
+                <view wx:if='{{inde === 0}}' data-index='{{index}}' bindtap='toggle'>{{item.restaurant.activities.length}}个活动
+                  <text class="iconfont icon-xia" wx:if='{{!item.show}}' style="font-size: 20rpx"></text>
+                  <text class="iconfont icon-shang" wx:if='{{item.show}}' style="font-size: 20rpx"></text>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </block>
+    </view>
+  </template>

@@ -1,11 +1,12 @@
-// pages/user/user.js
+// pages/restaurants/restaurants.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    restaurants:[],
+    url:''
   },
 
   /**
