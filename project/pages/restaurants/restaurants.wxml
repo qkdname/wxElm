@@ -1,8 +1,10 @@
 <template name='restaurants'>
+
+  <view>
     <view>
       <block wx:for='{{restaurants}}' wx:key='{{index}}'>
         <view class="pos-r" style="display:block;border-bottom:2rpx solid #eee;padding: 20rpx 20rpx 20rpx 170rpx;min-width: 130rpx;">
-          <navigator url='{{url}}'>
+          <navigator url='{{url+"?id="+item.restaurant.id}}'>
             <image class="pos-a" src='{{item.restaurant.image_path}}' style="top:20rpx;left:20rpx;width: 130rpx;height: 130rpx;"></image>
             <view class="fx-sbt" style="height: 130rpx;flex-direction: column;font-size: 24rpx;">
               <view class="fx-sbt">
@@ -55,4 +57,7 @@
         </view>
       </block>
     </view>
-  </template>
+    <view style="height: 80rpx;width: 80rpx" class="weui-loading" wx:if='{{!restaurants.length}}'></view>
+    <view style="height: 40rpx;width: 40rpx" class="weui-loading" wx:if='{{bottom}}'></view>
+  </view>
+</template>

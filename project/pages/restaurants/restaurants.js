@@ -6,7 +6,8 @@ Page({
    */
   data: {
     restaurants:[],
-    url:''
+    url:'',
+    bottom:false
   },
 
   /**

@@ -10,7 +10,8 @@ Page({
     },
     restaurants: [],
     offset: 0,
-    bottom: false
+    bottom: false,
+    
   },
   getAddress: utils.getAddress,
   getEntries(th,data) {
@@ -53,7 +54,7 @@ Page({
         address: a
       });
       this.getEntries(this,a);
-      this.getRestaurants(this,a)
+      this.getRestaurants(this)
     } else {
       utils.getAddress(
         this,
@@ -102,7 +103,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.getRestaurants(this, {}, true)
+    this.setData({bottom:true})
+    this.getRestaurants(this)
   },
 
   /**

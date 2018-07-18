@@ -1,2 +1,96 @@
-<!--packageA/pages/search/search.wxml-->
-<text>packageA/pages/search/search.wxml</text>
+<view style="padding: 20rpx;" class='search-box'>
+  <icon type='search' size='14' />
+  <input type="text" style="display: block;padding: 10rpx 20rpx 10rpx 60rpx;background: #f3f3f3;line-height:70rpx" placeholder='搜索商家，商品'
+    bindconfirm='setKeyword' bindinput='setShow' />
+</view>
+<view wx:if='{{showWords}}'>
+  <view wx:if='{{history.length}}'>
+    <view style='font-size:32rpx;font-weight:bold;padding:20rpx'>历史搜索
+      <text class="fr" style="font-size: 24rpx;color:#999" bindtap='clear'>清空</text>
+    </view>
+    <view>
+      <block wx:for='{{history}}' wx:key='{{index}}'>
+        <text style='display:inline-block;padding:12rpx 20rpx;background:#f3f3f3;margin:12rpx 24rpx' bindtap='setKeyword' data-word="{{item}}">{{item}}</text>
+      </block>
+    </view>
+  </view>
+  <view class="hots">
+    <view style='font-size:32rpx;font-weight:bold;padding:20rpx'>热门搜索</view>
+    <view>
+      <block wx:for='{{hots}}' wx:key='{{index}}'>
+        <text style='display:inline-block;padding:12rpx 20rpx;background:#f3f3f3;margin:12rpx 24rpx' data-word='{{item.word}}' bindtap='setKeyword'>{{item.word}}</text>
+      </block>
+    </view>
+
+
+  </view>
+</view>
+<view wx:if='{{!showWords}}' style="z-index: 10;">
+  <view style="display: flex;justify-content: space-around;border-bottom: 2rpx solid #ccc;line-height: 60rpx;">
+    <view bindtap='switchOrderBy' style="font-weight: bold">{{orderByText}}</view>
+    <view data-num='7' bindtap='setOrderBy' class="{{orderBy == 7?'orderBy':''}}">好评优先</view>
+    <view data-num='5' bindtap='setOrderBy' class="{{orderBy == 5?'orderBy':''}}">距离最近</view>
+    <view data-num='2' bindtap='setOrderBy' class="{{orderBy == 2?'orderBy':''}}">配送最快</view>
+  </view>
+  <view wx:if='{{showOrderBy}}' style="line-height: 70rpx;" class="orders" bindtap='setOrderBy'>
+    <view data-num='0' data-text='综合排序' class="{{orderBy == 0?'orderBy':''}}">综合排序</view>
+    <view data-num='6' data-text='销量高' class="{{orderBy == 6?'orderBy':''}}">销量高</view>
+    <view data-num='1' data-text='起送价低' class="{{orderBy == 1?'orderBy':''}}">起送价低</view>
+    <view data-num='9' data-text='配送费最低' class="{{orderBy == 9?'orderBy':''}}">配送费最低</view>
+  </view>
+  <view wx:if='{{showOrderBy}}' style="z-index: 5;position: fixed;width: 100%;height: 100%;background: rgba(0,0,0,.7)"></view>
+</view>
+<view style="height: 80rpx;width: 80rpx" class="weui-loading" wx:if='{{loading}}'></view>
+
+<view wx:if='{{!showWords&&foods.length&&!loading}}'>
+
+  <view style='padding:20rpx'>
+    <block wx:for='{{foods}}' wx:key='{{index}}'>
+      <view style="margin-bottom: 24rpx;">
+        <view style='position:relative;min-height: 60rpx;margin:12rpx 0'>
+          <image src='{{item.restaurant.image_path}}' style='position:absolute;width: 60rpx;height: 60rpx;'></image>
+          <view style="padding-left:70rpx">
+            <view>{{item.restaurant.name}}</view>
+            <view style="display: flex;justify-content: space-between;color: #666;font-size: 20rpx;font-weight: 4000">
+              <view>
+                <text>评分：{{item.restaurant.rating}} | </text>
+                <text style="margin: 0 5rpx"> 起送费{{item.restaurant.float_delivery_fee}} </text>
+                <text>{{item.restaurant.piecewise_agent_fee.description}}</text>
+              </view>
+              <view>
+                <text>{{item.restaurant.distance/1000}}km | </text>
+                <text style="margin-left: 5rpx;">{{item.restaurant.order_lead_time}}分钟</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view>
+          <block wx:for='{{item.foods}}' wx:for-item='ite' wx:for-index='inde' wx:key='{{inde}}'>
+            <view wx:if='{{inde<2 || item.show}}' style="display: flex;padding:12px 0;border-bottom: 1px solid hsla(0,0%,89%,.5);">
+              <image src='{{ite.image_path}}' style="width: 120rpx;height: 120rpx;margin-right: 10rpx"></image>
+              <view style="display: flex;flex-direction: column;justify-content: space-between">
+                <view>{{ite.name}}</view>
+                <view style="font-size: 20rpx">
+
+                  <text>月售{{ite.month_sales}} </text>
+                  <text> 好评率{{ite.satisfy.rate}}</text>
+                </view>
+                <view>
+                  <text style="color:#ff5339;font-size: 24rpx;margin-right: 10rpx">价格 {{ite.price}}</text>
+                  <text style="font-size:20rpx;color: rgb(112, 188, 70);border:2rpx solid rgb(112, 188, 70)">新用户下单立减14元</text>
+                </view>
+              </view>
+            </view>
+          </block>
+          
+        </view>
+        
+      </view>
+      <view wx:if='{{item.foods.length>1}}' style="text-align: center;margin: 10rpx 0 40rpx;" data-index='{{index}}' bindtap='showMore'>
+          <text wx:if='{{item.show}}'>收起</text>
+          <view wx:if='{{!item.show}}'>展示全部</view>
+        </view>
+    </block>
+  </view>
+</view>
+<view style="height: 40rpx;width: 40rpx" class="weui-loading" wx:if='{{bottom}}'></view>

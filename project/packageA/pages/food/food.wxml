@@ -1,25 +1,30 @@
 <import src='../../../pages/restaurants/restaurants' />
 <view class="{{showRank?'mask':'mas'}}">
-  <view style="z-index:99;background: #fff;">
+  <view style="background: #fff;">
     <scroll-view scroll-x class="bg-main" style="overflow: hidden;white-space: nowrap;">
       <block wx:for='{{categories}}' wx:key='{{index}}'>
         <text style="display: inline-block;line-height: 50rpx;margin: 10rpx 20rpx;border-bottom: {{index == currentIndex?'4rpx solid #fff':'none'}};opacity:{{index == currentIndex?1:0.7}}"
           data-ids='{{item.restaurant_category_ids}}' data-index='{{index}}' bindtap='setIds'>{{item.name}}</text>
       </block>
     </scroll-view>
-    <view class="txt-c" style="line-height: 70rpx;border-bottom: 2rpx solid #ccc;padding: 0 20rpx">
-      <view style="display: inline-block;width: 50%;" bindtap='showRank'>排序</view>
-      <view style="display: inline-block;width: 50%;">筛选</view>
+    <view class="filters">
+      <view style="font-weight: bold" bindtap='showRank'>{{order_by_text}}
+        <text class="iconfont icon-xia"></text>
+      </view>
+      <view data-num='7' bindtap='setRank' class="{{order_by == 7?'orderBy':''}}">好评优先</view>
+      <view data-num='5' bindtap='setRank' class="{{order_by == 5?'orderBy':''}}">距离最近</view>
+      <view>筛选</view>
     </view>
-    <view class="rank" wx:if='{{showRank}}' class="txt-c" style="line-height: 60rpx;" bindtap='rank'>
-      <view style="border-bottom: 2rpx solid #ccc" data-rank='0'>综合排序</view>
-      <view style="border-bottom: 2rpx solid #ccc" data-rank='6'>销量高</view>
-      <view style="border-bottom: 2rpx solid #ccc" data-rank='1'>起送价低</view>
-      <view style="border-bottom: 2rpx solid #ccc" data-rank='2'>配送快</view>
+    <view wx:if='{{showRank}}' class="rank" style="line-height: 60rpx;" bindtap='setRank'>
+
+      <view data-num='' data-text='综合排序' class="{{order_by == ''?'orderBy':''}}">综合排序</view>
+      <view data-num='6' data-text='销量高' class="{{order_by == 6?'orderBy':''}}">销量高</view>
+      <view data-num='1' data-text='起送价低' class="{{order_by == 1?'orderBy':''}}">起送价低</view>
+      <view data-num='2' data-text='配送快' class="{{order_by == 2?'orderBy':''}}">配送快</view>
     </view>
   </view>
 </view>
-<view style="position: {{showRank?'fixed':'static'}};">
+<view>
 
-  <template is='restaurants' data='{{restaurants}}'></template>
+  <template is='restaurants' data='{{restaurants,bottom:bottom,url:"../shop/shop"}}'></template>
 </view>

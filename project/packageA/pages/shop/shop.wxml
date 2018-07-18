@@ -1,2 +1,11 @@
-<!--packageA/pages/shop/shop.wxml-->
-<text>packageA/pages/shop/shop.wxml</text>
+<view style="background: url('https://fuss10.elemecdn.com/5/76/d7d0940bc182036dcea3acedbac39png.png?imageMogr/format/webp/')  no-repeat 50% center;background-size: cover;height: 140rpx;padding-top: 60rpx;">
+  <image src='https://fuss10.elemecdn.com/4/6f/c302c0c8ee37a4de58ef6393e5c7ajpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/' style="display: block;width: 130rpx;height: 130rpx;margin: 0 auto;"></image>
+</view>
+<view class="info">
+  <text>评价:5.0</text>
+  <text>月销57单</text>
+  <text>蜂鸟快送32分钟</text>
+  <view style="color: #999;font-size: 24rpx">欢迎光临，用餐高峰期请提前下单，谢谢。</view>
+</view>
+
+

@@ -10,11 +10,13 @@ Page({
     restaurants:[],
     
     ids:'',
-    order_by:0,
+    order_by:'',
+    order_by_text:'综合排序',
     vip:'',
     supports:[],
     showRank:false,
-    offset:0
+    offset:0,
+    bottom:false
   },
   getCategory(id){
     const l = wx.getStorageSync('address');
@@ -25,12 +27,7 @@ Page({
         this.setData({categories:res.data});
         let ids = res.data[0].restaurant_category_ids;
         
-        this.getRestaurants(this,{
-          ids:ids,
-          order_by:this.data.order_by,
-          supports:this.data.supports,
-          vip:'',
-        });
+        this.getRestaurants(this);
         this.setData({ids:ids});
       }
     })
@@ -43,7 +40,7 @@ Page({
       return
     } else {
 
-      this.getRestaurants(this,{ids:d.ids});
+      this.getRestaurants(this);
     }
     
   },
@@ -58,22 +55,15 @@ Page({
     r[i].show = !r[i].show;
     this.setData({restaurants:r})
   },
-  rank(e){
-    //console.log(e);
-    const r = e.target.dataset.rank;
-    let rts = this.data.restaurants;
-    rts.sort(function (a,b) {
-      if(r == 'distance' || r == 'order_lead_time'){
-
-        return a['restaurant'][r]- b['restaurant'][r];
-      } else {
-        return b['restaurant'][r]- a['restaurant'][r];
-
-      }
+  setRank(e){
+    var d = e.target.dataset;
+    this.setData({
+      order_by:d.num,
       
+      showRank:false
     })
-    this.setData({restaurants:rts,showRank:false});
-
+    d.text&&this.setData({order_by_text:d.text,});
+    this.getRestaurants(this)
   },
   /**
    * 生命周期函数--监听页面加载
@@ -122,7 +112,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.getRestaurants(this,{ids:this.data.ids},true)
+    this.setData({bottom:true})
+    this.getRestaurants(this)
   },
 
   /**

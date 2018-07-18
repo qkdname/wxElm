@@ -1,18 +1,45 @@
-// pages/find/find.js
+const utils = require('../../utils/util');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    discover:{},
+    suggest:[]
   },
-
+  discover(){
+    wx.request({
+      url:'https://h5.ele.me/restapi/member/v1/discover?platform=1&block_index=0',
+      success: res => {
+        // console.log(res)
+        var d = res.data['1'];
+        d.forEach(item => {
+          item.main_pic_hash = utils.formatHash(item.main_pic_hash)
+        })
+        this.setData({discover:d})
+      }
+    })
+  },
+  getSuggest(){
+    wx.request({
+      url:'https://h5.ele.me/restapi/member/gifts/suggest',
+      success: res => {
+        console.log(res);
+        let suggset = res.data;
+        suggset.forEach(item => {
+          item.image_hash = utils.formatHash(item.image_hash);
+        })
+        this.setData({suggest:suggset})
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.discover();
+    this.getSuggest()
   },
 
   /**

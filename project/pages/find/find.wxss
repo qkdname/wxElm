@@ -1,1 +1,19 @@
-/* pages/find/find.wxss */
+.discover>view:nth-child(1){
+  position: absolute;
+}
+.discover>view{
+  width: 50%;
+  padding: 20rpx;
+  background: #fff;
+}
+.discover>view:nth-child(2),.discover>view:nth-child(3){
+  margin-left: 50%;
+}
+.discover>view:nth-child(3n+1){
+  border-right: 2rpx solid #ededed;
+}
+.discover>view:nth-child(n+3){
+  border-top: 2rpx solid #ededed;
+}
+
+

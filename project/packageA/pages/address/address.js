@@ -34,12 +34,14 @@ Page({
       url: '../../../pages/msite/msite'
     })
   },
-  getAddress:utils.getAddress,
+  getAddress(){
+    utils.getAddress(this)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getAddress(this)
+    this.getAddress()
   },
 
   /**

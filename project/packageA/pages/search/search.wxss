@@ -1,1 +1,15 @@
-/* packageA/pages/search/search.wxss */
+.search-box{
+  position:relative;
+}
+.search-box icon{
+  position:absolute;
+  left:35rpx;
+  top:40rpx;
+  background:#f3f3f3;
+}
+.orders view{
+  padding-left: 40rpx;
+}
+.orderBy{
+  color:#0085ff
+}

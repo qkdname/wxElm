@@ -4,7 +4,7 @@
 </navigator>
 
 <view style="background: #0085ff; padding: 20rpx">
-  <navigator style="background: #fff;color: #999;line-height: 70rpx;" class="txt-c" url='../../packageA/pages/search/search'>搜索饿了么商品
+  <navigator style="background: #fff;color: #999;line-height: 70rpx;" class="txt-c" url='../../packageA/pages/search/search'>搜索饿了么商家，商品名称
   </navigator>
 </view>
 <swiper indicator-dots='true' indicator-active-color='#0085ff' style="height: 360rpx;">
@@ -27,4 +27,4 @@
   </swiper-item>
 </swiper>
 <view class="txt-c" style="font-weight: bold">- 附近商家 -</view>
-<template is='restaurants' data='{{restaurants:restaurants,url:"../../packageA/pages/shop/shop"}}'></template>
+<template is='restaurants' data='{{restaurants:restaurants,bottom:bottom,url:"../../packageA/pages/shop/shop"}}'></template>

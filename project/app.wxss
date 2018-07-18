@@ -1,9 +1,14 @@
 @import 'css/icon.wxss';
+@import 'css/common.wxss';
 page {
+  width: 100%;
+  height: 100%;
   font: 28rpx/1.2 'Helvetica Neue', Tahoma, Arial, PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
   color: #333;
 }
-
+view{
+  box-sizing: border-box;
+}
 .bg-main {
   background: #0085ff;
   color: #fff;

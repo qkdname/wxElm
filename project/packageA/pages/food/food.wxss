@@ -1,1 +1,27 @@
-/* packageA/pages/food/food.wxss */
+.mask{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,.8);
+  z-index: 100;
+  
+}
+.filters{
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 4rpx solid #ccc;
+}
+.filters>view{
+  
+  line-height: 70rpx;
+}
+.filters>view>text{
+  font-size: 24rpx;
+}
+.rank,.rank view{
+  text-align:left;
+  padding-left: 20rpx;
+}
+.orderBy{
+  color:#0085ff
+}
